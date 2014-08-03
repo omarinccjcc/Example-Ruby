@@ -1,0 +1,59 @@
+require 'rubygems' if RUBY_VERSION < '1.9'
+require 'sinatra'
+require './lib/iniciar_sesion'
+require './lib/jugar'
+
+configure do
+  set :views, "#{File.dirname(__FILE__)}/views"
+end
+
+get '/' do
+	@@intentos = 0
+	@@jugar = Jugar.new
+	@@sesion = Iniciar_Sesion.new
+	@mensaje_inicial = @@sesion.mensaje_inicial
+	erb :iniciar_sesion
+end
+
+post '/configurar_juego' do
+	usuario = @params[:usuario]
+	@@sesion.iniciar_sesion(usuario)
+	@saludo = @@sesion.mensaje_bienvenida(1)
+
+	erb :configurar_juego
+
+end
+
+get '/jugar' do
+	@secuencia = ""
+	@mensaje_final = ""
+	if !@params[:palabra].nil? and @params[:letra].nil?
+		@@jugar.iniciar_secuencia(@params[:palabra])
+		@secuencia = @@jugar.secuencia
+	end
+
+	if !@params[:letra].nil?
+		@letra = @params[:letra]
+		@@jugar.adivinar(@letra)
+		@secuencia = @@jugar.secuencia
+		if @@jugar.secuencia == "_ _ _ _"
+			@@intentos = @@intentos + 1
+		end
+	end
+
+	if @@intentos >= 6
+		@mensaje_final = "Perdiste"
+	end
+
+  erb:jugar
+end
+
+get '/resultado' do
+	@nombre = @@sesion.jugador1
+	@mensaje = "Ganaste"
+	erb:resultado
+end
+
+
+
+

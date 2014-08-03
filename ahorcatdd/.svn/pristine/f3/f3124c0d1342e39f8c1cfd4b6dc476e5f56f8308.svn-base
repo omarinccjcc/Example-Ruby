@@ -1,0 +1,25 @@
+Feature: Adivinar Letra
+
+	Scenario: Mostrar secuencia para palabra HOLA
+		Given I open the web app
+		And I open jugar and I send "HOLA"
+		Then I should see "_ _ _ _"
+
+	Scenario: Mostrar secuencia para palabra POLLO
+		Given I open the web app
+		And I open jugar and I send "POLLO"
+		Then I should see "_ _ _ _ _"
+
+  Scenario: al ingresar letra A con palabra HOLA
+		Given I open the web app
+  	And I open jugar and I send "HOLA"
+  	When I fill "letra" with "A"
+  	And I press "jugar"
+  	Then I should see "_ _ _ A"
+
+ 	Scenario: al ingresar letra L con palabra POLLO
+		Given I open the web app
+  	And I open jugar and I send "POLLO"
+  	When I fill "letra" with "L"
+  	And I press "jugar"
+  	Then I should see "_ _ L L _"

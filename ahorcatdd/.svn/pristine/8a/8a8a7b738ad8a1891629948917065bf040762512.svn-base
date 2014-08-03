@@ -1,0 +1,15 @@
+require 'rubygems' if RUBY_VERSION < '1.9'
+require 'sinatra'
+require './lib/jugar'
+
+configure do
+  set :views, "#{File.dirname(__FILE__)}/views"
+end
+
+
+
+get '/jugar' do
+	@@jugar = Jugar.new
+	@@jugar.palabra(@params[:palabra])
+	@@jugar.secuencia
+end

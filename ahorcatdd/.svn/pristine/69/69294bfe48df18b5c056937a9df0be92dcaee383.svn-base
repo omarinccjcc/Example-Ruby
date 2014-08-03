@@ -1,0 +1,9 @@
+Feature: Adivinar Letra
+
+	Scenario: Mostrar secuencia para palabra HOLA
+		Given I open jugar and I send "HOLA"
+		Then I should see "_ _ _ _"
+
+	Scenario: Mostrar secuencia para palabra POLLO
+		Given I open jugar and I send "POLLO"
+		Then I should see "_ _ _ _ _"

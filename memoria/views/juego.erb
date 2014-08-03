@@ -1,0 +1,7 @@
+<h1>Preparado para jugar<h1>
+<%=@secuencia_oculta%><br>
+<form action="/jugar" method="post">
+	<input type="text" name="posiciones">
+	<input type="submit" value="jugar">
+</form>
+<%=@error%>

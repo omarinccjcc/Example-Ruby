@@ -1,0 +1,41 @@
+
+class Jugar
+	attr_accessor :palabra, :secuencia, :intentos, :mensaje_final, :secuencia_anterior
+
+	def initialize
+		@secuencia = ""
+		@palabra = ""
+		@intentos = 0
+		@mensaje_final = ""
+	end
+
+	def iniciar_secuencia(palabra)
+		@palabra = palabra
+		longitud = @palabra.length
+		longitud.times do
+			@secuencia = @secuencia + "_ "
+		end
+		@secuencia = @secuencia.strip
+		return @secuencia
+	end
+
+	def adivinar(letra)
+		posicion = 0
+		@palabra.length.times do
+			if (@palabra[posicion] == letra)
+				@secuencia[posicion*2] = letra
+			else 		
+				if @secuencia == @secuencia_anterior
+					@intentos = @intentos + 1
+				end
+			end
+			posicion = posicion + 1
+		end
+
+		@secuencia_anterior = @secuencia
+
+		if @intentos >= 6
+			@mensaje_final = "Perdiste"
+		end
+	end
+end

@@ -1,0 +1,16 @@
+require "../lib/jugar"
+
+describe Jugar do
+	it "Si la palbra es HOLA la secuencia debe ser _ _ _ _" do
+		jugar = Jugar.new
+		jugar.palabra("HOLA")
+		expect(jugar.secuencia).to eq("_ _ _ _")
+	end
+
+
+	it "Si la palbra es POLLO la secuencia debe ser _ _ _ _ _" do
+		jugar = Jugar.new
+		jugar.palabra("POLLO")
+		expect(jugar.secuencia).to eq("_ _ _ _ _")
+	end
+end

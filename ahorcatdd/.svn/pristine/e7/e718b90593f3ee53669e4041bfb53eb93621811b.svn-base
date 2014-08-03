@@ -1,0 +1,11 @@
+Feature: Configurar Juego
+
+	Scenario: Pantalla para seleccionar modo de juego
+	Given I open link configurar juego
+	Then I should see "Seleccionar Modo Juego"
+
+	Scenario: Verificar opcion forever alone
+	Given I open link configurar juego
+		And I select "Forever Alone"
+		And I press "Jugar"
+	Then I should see "Jugar"

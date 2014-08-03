@@ -1,0 +1,32 @@
+require 'rubygems' if RUBY_VERSION < '1.9'
+require 'sinatra'
+require './lib/iniciar_sesion'
+require './lib/jugar'
+
+configure do
+  set :views, "#{File.dirname(__FILE__)}/views"
+end
+
+get '/' do
+	@@sesion = Iniciar_Sesion.new
+	@mensaje_inicial = @@sesion.mensaje_inicial
+	erb :iniciar_sesion
+end
+
+post '/configurar_juego' do
+	usuario = @params[:usuario]
+	@@sesion.iniciar_sesion(usuario)
+	@saludo = @@sesion.mensaje_bienvenida(1)
+
+	erb :configurar_juego
+
+end
+
+get '/jugar' do
+  #@modo_juego = params[:modo_seleccionado]
+	#@@jugar = Jugar.new
+	#@@jugar.palabra(@params[:palabra])
+	#@@jugar.secuencia
+	"Jugar"
+end
+

@@ -1,0 +1,13 @@
+<h1>Jugar</h1>
+<form action="" method = "get">
+
+<br>
+<%= @secuencia%><br>
+<input type="text" name="letra" /> 
+<input type="submit" value="jugar" />
+<%= @mensaje_final%>
+</form>
+
+<img src='img/<%= @intentos %>.png'">
+<a href="/resultado">resultado</a>
+

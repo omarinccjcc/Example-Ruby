@@ -1,0 +1,9 @@
+<h1>Jugar</h1>
+<form action="" method = "get">
+
+<%=@secuencia%>
+<input type="text" name="letra" /> 
+<input type="submit" value="jugar" />
+</form>
+
+<a href="/resultado">resultado</a>

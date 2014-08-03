@@ -1,0 +1,17 @@
+
+class Jugar
+	attr_accessor :palabra
+
+	def palabra(palabra) 
+		@palabra = palabra
+	end
+
+	def secuencia
+		longitud = @palabra.length
+		secuencia = ""
+		longitud.times do
+			secuencia = secuencia + "_ "
+		end
+		return secuencia.strip
+	end
+end
